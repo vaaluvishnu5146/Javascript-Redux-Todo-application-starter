@@ -4,6 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo App</title>
+    <!-- Compiled and minified Redux-->
+    <script src="https://unpkg.com/redux@4.0.0/dist/redux.min.js"></script>
+
+    <!-- Include custom scripts -->
+    <script src="./actions/todo.action.js"></script>
+    <script src="./reducers/todo.reducer.js"></script>
+    <script src="./store/store.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="form-container">
+      <div class="form-header">
+        <input id="todo" placeholder="Enter your task" />
+        <button onclick="handleAddTodoButtonClick()">Add</button>
+      </div>
+      <div class="form-body">
+        <ul id="todo-list"></ul>
+      </div>
+    </div>
+    <script>
+      function handleAddTodoButtonClick(e) {
+        const todoInput = document.getElementById("todo");
+        bindAddTodoList({
+          id: Math.random(),
+          task: todoInput.value,
+        });
+        todoInput.value = "";
+      }
+    </script>
+  </body>
 </html>
